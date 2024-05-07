@@ -1,19 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-void complete(vector<vector<int>> arr,int size){
-//checking if the graph is a complete graph
-    for(int i = 0;i<size;i++){
-        for(int j = 0;j<size;j++){
-            if(i==j && arr[i][j] !=0){
-                cout << "The given graph is not a complete graph"<< endl;
-                return ;
+void complete(vector<vector<int>> arr, int size)
+{
+    // checking if the graph is a complete graph
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (i == j && arr[i][j] != 0)
+            {
+                cout << "The given graph is not a complete graph" << endl;
+                return;
             }
-            else if(i!=j && arr[i][j] !=1){
-                 cout << "The given graph is not a complete graph"<< endl;
-                return ;
+            else if (i != j && arr[i][j] != 1)
+            {
+                cout << "The given graph is not a complete graph" << endl;
+                return;
             }
         }
-        cout << "The given graph is a complete graph"<< endl;
+        cout << "The given graph is a complete graph" << endl;
         return;
     }
 }
@@ -23,19 +28,21 @@ int main()
     vector<vector<char>> relations;
     cout << "Enter the number of vertices" << endl;
     cin >> vertices;
-    cout << "Enter the number of relations" << endl;
+    cout << "Enter the number of edges" << endl;
     cin >> numOfRelations;
-    cout << "Enter all the relations like this\na a\na b\na c" << endl;
+    cout << "Enter all the edges like this\na a\na b\na c" << endl;
     cout << "--------------" << endl;
     for (int i = 0; i < numOfRelations; i++)
     {
-        vector<char> pair;
+        vector<char> pair={};
         for (int j = 0; j < 2; j++)
         {
             char element;
             cin >> element;
             pair.push_back(element);
         }
+        relations.push_back(pair);
+        swap(pair[0],pair[1]);
         relations.push_back(pair);
     }
     vector<vector<int>> relationMatrix;
@@ -69,6 +76,6 @@ int main()
         }
         cout << endl;
     }
-    complete(relationMatrix,relationMatrix.size());
+    complete(relationMatrix, relationMatrix.size());
     return 0;
 }

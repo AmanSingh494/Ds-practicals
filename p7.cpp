@@ -11,7 +11,15 @@ bool isCompleteGraph(const vector<set<int>>& adjacencyList) {
     }
     return true;
 }
-
+void representGraph(vector<set<int>> arr){
+    for(int i = 0;i<arr.size();i++){
+        cout << i << ' ' << ':' << ' '<<'[';
+        for(auto it:arr[i]){
+            cout <<  it <<' ';
+        }
+        cout << ']' << endl;
+    }
+}
 int main() {
     int numVertices, numEdges;
     cout << "Enter the number of vertices: ";
@@ -34,6 +42,6 @@ int main() {
     } else {
         cout << "The graph is not complete\n";
     }
-
+    representGraph(adjacencyList);
     return 0;
 }
