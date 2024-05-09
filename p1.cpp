@@ -27,11 +27,20 @@ public:
     }
     set<set<int>> powerSet()
     {
+        vector<int> S(mySet.begin(), mySet.end());
+        int total = pow(2, S.size());
         set<set<int>> powerSets;
-        set<int> currentSet;
-        for (int i = 0; i < mySet.size(); i++)
+        for (int i = 0; i < total; i++)
         {
+            set<int> subset;
+            for (int j = 0; j < S.size(); j++)
+            {
+                if ((i & (1 << j)) != 0)
+                    subset.insert(S[j]);
+            }
+            powerSets.insert(subset);
         }
+        return powerSets;
     }
     bool isSubset(set<int> other)
     {
